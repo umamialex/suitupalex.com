@@ -1,6 +1,6 @@
 {
   "name": "suitupalex.com",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Source code for suitupalex.com.",
   "main": "backend/server.js",
   "scripts": {
