@@ -1,8 +1,9 @@
 'use strict'
 
 var React = require('react')
-var TapEvent = require('./TapEvent/TapEvent.js')
-var WebFonts = require('./WebFonts/WebFonts.js')
+var GoogleAnalytics = require('./GoogleAnalytics/GoogleAnalytics.jsx')
+var TapEvent = require('./TapEvent/TapEvent.jsx')
+var WebFonts = require('./WebFonts/WebFonts.jsx')
 
 module.exports = React.createClass({
   propTypes: {
@@ -11,6 +12,7 @@ module.exports = React.createClass({
 , render: function render() {
     return (
       <div>
+        <GoogleAnalytics/>
         <TapEvent/>
         <WebFonts fonts={this.props.fonts}/>
       </div>
