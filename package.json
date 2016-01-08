@@ -10,7 +10,7 @@
   "author": "Alexander Martin",
   "license": "None",
   "dependencies": {
-    "async": "^1.4.2",
+    "async": "^1.5.2",
     "debug": "^2.2.0",
     "eslint": "^1.1.0",
     "express": "^4.13.0",
