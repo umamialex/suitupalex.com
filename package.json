@@ -33,7 +33,7 @@
     "css-loader": "^0.16.0",
     "eslint-plugin-react": "^3.2.3",
     "file-loader": "^0.8.4",
-    "gulp": "^3.9.0",
+    "gulp": "^3.9.1",
     "gulp-eslint": "^1.0.0",
     "gulp-nodemon": "^2.0.3",
     "jade-loader": "^0.7.1",
