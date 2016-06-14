@@ -1,52 +1,27 @@
 'use strict'
 
-// Utility Modules
-const debug = require('debug')('suitupalex:server')
-const path = require('path')
+const env = require('../lib/env')
+const log = require('../lib/log')
+const paths = require('../lib/paths')
 
-// Server Modules
-const express = require('express')
-const app = express()
-const http = require('http').createServer(app)
-const io = require('socket.io')(http)
+const ContentManager = require('./ContentManager/ContentManager')
+const HttpServer = require('./HttpServer/HttpServer')
 
-// Proprietary Modules
-const Social = require('./Social/Social.js')
-const social = new Social()
-
-function socialUpdateCallback(error, posts) {
-  if (error) {
-    return debug(error)
-  }
-
-  io.emit('social update', posts)
-}
-
-app.set('views', path.join(__dirname, '..', 'frontend'))
-app.set('view engine', 'jade')
-
-app.get('/base.js', function expressBaseJs(request, response) {
-  response.sendFile(path.join(__dirname, '..', 'frontend', 'base.bundle.js'))
+const contentManager = new ContentManager({
+  accessToken: env.CONTENTFUL_ACCESS_TOKEN
+, log: log.contentManager
+, fetchInterval:
+    parseFloat(env.FETCH_INTERVAL ? env.FETCH_INTERVAL : 30) * 60000
+, space: env.CONTENTFUL_SPACE
 })
 
-app.get('*', function expressWildcard(request, response) {
-  response.render('base')
+const httpServer = new HttpServer({
+  baseJsPath: paths.BASE_JS
+, contentManager: contentManager
+, log: log.httpServer
+, port: env.PORT
+, viewPath: paths.FRONTEND
 })
 
-io.on('connection', function ioConnection(socket) {
-  debug('Client connected.')
-  socket.emit('social update', social.posts)
-})
-
-const server = http.listen(process.env.PORT, function serverListen() {
-  const host = server.address().address
-  const port = server.address().port
-
-  debug('Listening on %s:%s', host, port)
-
-  social.getPosts(socialUpdateCallback)
-
-  setInterval(function intervalGetPosts() {
-    social.getPosts(socialUpdateCallback)
-  }, 1000 * 60 * 10)
-})
+httpServer.start()
+contentManager.startFetchInterval(httpServer.emitContentUpdate)
