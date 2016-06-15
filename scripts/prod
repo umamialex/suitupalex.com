@@ -1,0 +1,11 @@
+#!/bin/bash
+
+printf "Building prod with webpack:\n\n"
+
+NODE_ENV=production \
+SA_PORT=8080 \
+SA_URL=http://suitupalex.com \
+SA_FETCH_INTERVAL=30 \
+webpack --progress --colors
+
+printf "\nFinished build."
