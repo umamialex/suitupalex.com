@@ -1,12 +1,9 @@
-'use strict'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-var React = require('react')
+import App from './App/App.jsx'
 
-var Plugins = require('./Plugins/Plugins.jsx')
-var App = require('./App/App.jsx')
-
-React.render(<Plugins fonts={['Roboto']}/>, document.body)
-React.render(
-  <App settingsPrefix='sua_' socketUrl={process.env.SOCKET_URL}/>
-, document.body
+ReactDOM.render(
+  <App url={`${process.env.URL}`}/>
+, document.body.querySelector('#app')
 )
