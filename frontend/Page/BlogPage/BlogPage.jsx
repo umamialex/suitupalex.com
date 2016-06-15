@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import moment from 'moment'
 import React from 'react'
+import ReactDisqusThread from 'react-disqus-thread'
 import ReactMarkdown from 'react-markdown'
 import 'dropcap.js'
 
@@ -41,6 +42,8 @@ class BlogPage extends React.Component {
   render() {
     const props = this.props
 
+    const title = this.getContent('title')
+    const slug = this.getContent('slug')
     const body = this.getContent('body')
     const dropcap = body ? body.slice(0, 1) : ''
     const restOfBody = body ? body.slice(1) : ''
@@ -79,7 +82,7 @@ class BlogPage extends React.Component {
         globalElements={props.globalElements}
         updateRoute={props.updateRoute}
       >
-        <h1>&ldquo;{this.getContent('title')}&rdquo;</h1>
+        <h1>&ldquo;{title}&rdquo;</h1>
         <p className='blog-page-date'>{formattedDate}</p>
         <hr/>
         <span className='blog-page-dropcap'>{dropcap}</span>
@@ -96,6 +99,14 @@ class BlogPage extends React.Component {
           {previousLink}{nextLink}
           <span className='clear'/>
         </p>
+        <div className='blog-page-disqus'>
+          <ReactDisqusThread
+            shortname='suitupalex'
+            url={`http://suitupalex.com/${slug}`}
+            identifier={slug}
+            title={title}
+          />
+        </div>
       </Page>
     )
   }
