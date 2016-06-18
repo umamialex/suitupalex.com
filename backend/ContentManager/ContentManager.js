@@ -12,6 +12,8 @@ class ContentManager {
     , host: options.isProduction ? undefined : 'preview.contentful.com'
     })
 
+    this.log('Production environment:', options.isProduction)
+
     this.entryReducer = this.entryReducer.bind(this)
 
     this.fetchInterval = options.fetchInterval
