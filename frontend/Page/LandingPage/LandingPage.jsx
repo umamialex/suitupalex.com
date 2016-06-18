@@ -66,6 +66,14 @@ class LandingPage extends React.Component {
         <span className='blog-page-dropcap'>{dropcap}</span>
         <ReactMarkdown
           className='blog-page-body'
+          renderers={{
+            Link: props => (
+              <a
+                href={props.href}
+                target={props.href.indexOf('/') === 0 ? '' : '_blank'}
+              >{props.children}</a>
+            )
+          }}
           source={restOfBody}
         />
         <p>
