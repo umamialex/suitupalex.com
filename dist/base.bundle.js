@@ -20231,6 +20231,10 @@
 
 	var _Router2 = _interopRequireDefault(_Router);
 
+	var _package = __webpack_require__(380);
+
+	var _package2 = _interopRequireDefault(_package);
+
 	var _log = __webpack_require__(233);
 
 	__webpack_require__(378);
@@ -20253,7 +20257,7 @@
 
 	    window.app = _this;
 
-	    (0, _log.web)('Application started.');
+	    (0, _log.web)('Application started: v' + _package2.default.version);
 
 	    (0, _log.web)('Connecting to socket:', props.url);
 	    var socket = (0, _socket2.default)(props.url);
@@ -38710,7 +38714,7 @@
 
 	var debug = __webpack_require__(171);
 
-	var SUBSYSTEMS = ['contentManager', 'httpServer', 'web'];
+	var SUBSYSTEMS = ['contentManager', 'httpServer', 'server', 'web'];
 
 	function subsystemIterator(subsystem) {
 	  exports[subsystem] = debug(PREFIX + ':' + subsystem);
@@ -58797,6 +58801,66 @@
 
 	// exports
 
+
+/***/ },
+/* 380 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"name": "suitupalex.com",
+		"version": "1.0.1",
+		"description": "Source code for suitupalex.com.",
+		"scripts": {
+			"build": "./scripts/build",
+			"lint": "./scripts/lint",
+			"prod": "./scripts/prod",
+			"start": "./scripts/start",
+			"test": "./scripts/test",
+			"watch": "./scripts/watch"
+		},
+		"author": "Alexander Martin",
+		"repository": {
+			"type": "git",
+			"url": "https://github.com/suitupalex/suitupalex.com"
+		},
+		"dependencies": {
+			"contentful": "^3.3.14",
+			"debug": "^2.2.0",
+			"hapi": "^13.4.1",
+			"inert": "^4.0.0",
+			"pug": "^2.0.0-beta3",
+			"socket.io": "^1.4.6",
+			"vision": "^4.1.0"
+		},
+		"devDependencies": {
+			"babel-core": "^6.9.1",
+			"babel-loader": "^6.2.4",
+			"babel-preset-es2015": "^6.9.0",
+			"babel-preset-react": "^6.5.0",
+			"css-loader": "^0.23.1",
+			"dropcap.js": "^1.0.1",
+			"file-loader": "^0.8.5",
+			"json-loader": "^0.5.4",
+			"jsx-loader": "^0.13.2",
+			"lodash": "^4.13.1",
+			"moment": "^2.13.0",
+			"node-sass": "^3.7.0",
+			"nodemon": "^1.9.2",
+			"react": "^15.1.0",
+			"react-disqus-thread": "^0.4.0",
+			"react-dom": "^15.1.0",
+			"react-markdown": "^2.3.0",
+			"sass-loader": "^3.2.0",
+			"scroll-js": "^1.1.1",
+			"socket.io-client": "^1.4.6",
+			"style-loader": "^0.13.1",
+			"tap": "^5.7.2",
+			"uglify-loader": "^1.3.0",
+			"url-loader": "^0.5.7",
+			"url-parse": "^1.1.1",
+			"webpack": "^1.13.1"
+		}
+	};
 
 /***/ }
 /******/ ]);
