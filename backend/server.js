@@ -8,7 +8,8 @@ const ContentManager = require('./ContentManager/ContentManager')
 const HttpServer = require('./HttpServer/HttpServer')
 
 const contentManager = new ContentManager({
-  accessToken: env.CONTENTFUL_ACCESS_TOKEN
+  productionAccessToken: env.CONTENTFUL_PRODUCTION_ACCESS_TOKEN
+, previewAccessToken: env.CONTENTFUL_PREVIEW_ACCESS_TOKEN
 , fetchInterval:
     parseFloat(env.FETCH_INTERVAL ? env.FETCH_INTERVAL : 30) * 60000
 , isProduction: env.NODE_ENV === 'production'
