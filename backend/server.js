@@ -9,9 +9,10 @@ const HttpServer = require('./HttpServer/HttpServer')
 
 const contentManager = new ContentManager({
   accessToken: env.CONTENTFUL_ACCESS_TOKEN
-, log: log.contentManager
 , fetchInterval:
     parseFloat(env.FETCH_INTERVAL ? env.FETCH_INTERVAL : 30) * 60000
+, isProduction: env.NODE_ENV === 'production'
+, log: log.contentManager
 , space: env.CONTENTFUL_SPACE
 })
 

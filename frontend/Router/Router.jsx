@@ -40,13 +40,16 @@ class Router extends React.Component {
     log('Parsing route:', raw)
 
     const parsed = urlParse(raw, true)
+    const route = _.compact(parsed.pathname.split('/'))
 
     const out = {
-      route: _.compact(parsed.pathname.split('/'))
+      route
     , query: parsed.query
     }
 
     log('Parsed route to:', out)
+
+    this.updateGa(`/${route.join('/')}`)
 
     return out
   }
@@ -70,6 +73,13 @@ class Router extends React.Component {
     history.pushState(null, null, route.join('/'))
 
     this.setState(parsed)
+  }
+
+  updateGa(route) {
+    log('Updating GA:', route)
+
+    window.ga('set', 'page', route)
+    window.ga('send', 'pageview')
   }
 
   handlePopState() {
