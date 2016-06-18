@@ -47,6 +47,7 @@ class BlogPage extends React.Component {
     const body = this.getContent('body')
     const dropcap = body ? body.slice(0, 1) : ''
     const restOfBody = body ? body.slice(1) : ''
+    const readTime = Math.ceil(_.words(body).length / 275)
 
     const formattedDate = moment(this.getContent('publishDate'))
       .format('MMMM Do, YYYY')
@@ -83,7 +84,9 @@ class BlogPage extends React.Component {
         updateRoute={props.updateRoute}
       >
         <h1>&ldquo;{title}&rdquo;</h1>
-        <p className='blog-page-date'>{formattedDate}</p>
+        <p className='blog-page-date'>
+          {formattedDate} | {readTime} minute read
+        </p>
         <hr/>
         <span className='blog-page-dropcap'>{dropcap}</span>
         <ReactMarkdown

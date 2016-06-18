@@ -50,6 +50,7 @@ class LandingPage extends React.Component {
     const summary = body.slice(0, body.indexOf('\n\n'))
     const dropcap = summary ? summary.slice(0, 1) : ''
     const restOfBody = summary ? summary.slice(1) : ''
+    const readTime = Math.ceil(_.words(body).length / 275)
 
     const formattedDate = moment(blog.publishDate).format('MMMM Do, YYYY')
 
@@ -58,7 +59,9 @@ class LandingPage extends React.Component {
     return (
       <div className='blog-post' key={index}>
         <h2>&ldquo;{blog.title}&rdquo;</h2>
-        <p className='blog-page-date'>{formattedDate}</p>
+        <p className='blog-page-date'>
+          {formattedDate} | {readTime} minute read
+        </p>
         <hr/>
         <span className='blog-page-dropcap'>{dropcap}</span>
         <ReactMarkdown
