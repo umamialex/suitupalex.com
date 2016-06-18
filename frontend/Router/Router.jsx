@@ -109,11 +109,11 @@ class Router extends React.Component {
       ? blogPosts.indexOf(current)
       : false
 
-    const previous = index !== false && index > 0
+    const next = index !== false && index > 0
       ? blogPosts[index - 1]
       : null
 
-    const next = index !== false && index < blogPosts.length - 1
+    const previous = index !== false && index < blogPosts.length - 1
       ? blogPosts[index + 1]
       : null
 
