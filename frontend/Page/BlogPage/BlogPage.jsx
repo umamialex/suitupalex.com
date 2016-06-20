@@ -22,11 +22,12 @@ class BlogPage extends React.Component {
   }
 
   applyDropCap() {
+    const dropcap = this.refs.dropcap
+
     log('Applying dropcap.')
-    window.Dropcap.layout(
-      document.querySelectorAll('.blog-page-dropcap')
-    , 3
-    )
+
+    dropcap.dcapjsStrut = null
+    window.Dropcap.layout(dropcap, 3)
   }
 
   componentDidMount() {
@@ -88,7 +89,7 @@ class BlogPage extends React.Component {
           {formattedDate} | {readTime} minute read
         </p>
         <hr/>
-        <span className='blog-page-dropcap'>{dropcap}</span>
+        <span className='blog-page-dropcap' ref='dropcap'>{dropcap}</span>
         <ReactMarkdown
           className='blog-page-body'
           renderers={{

@@ -39,10 +39,11 @@ class LandingPage extends React.Component {
 
   applyDropCap() {
     log('Applying dropcap.')
-    window.Dropcap.layout(
-      document.querySelectorAll('.blog-page-dropcap')
-    , 3
-    )
+
+    const dropcaps = document.querySelectorAll('.blog-page-dropcap')
+    _.forEach(dropcaps, (dropcap) => {dropcap.dcapjsStrut=null})
+
+    window.Dropcap.layout(dropcaps, 3)
   }
 
   blogMapper(blog, index) {
