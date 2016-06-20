@@ -11,6 +11,7 @@
     "watch": "./scripts/watch"
   },
   "author": "Alexander Martin",
+  "license": "ECL",
   "repository": {
     "type": "git",
     "url": "https://github.com/suitupalex/suitupalex.com"
