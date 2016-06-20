@@ -64,6 +64,10 @@ class ContentManager {
     return b.date - a.date
   }
 
+  tagMapper(tag) {
+    return tag.fields
+  }
+
   entryReducer(result, entry) {
     const contentType = entry.sys.contentType.sys.id
     const fields = entry.fields
@@ -82,6 +86,7 @@ class ContentManager {
     switch (contentType) {
       case 'blogPost': {
         fields.date = new Date(fields.publishDate).getTime()
+        fields.tags = fields.rawTags.map(this.tagMapper)
 
         if (this.isProduction && fields.date > new Date().getTime()){
           return result

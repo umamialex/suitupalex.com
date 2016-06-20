@@ -3,6 +3,7 @@ import moment from 'moment'
 import React from 'react'
 import ReactDisqusThread from 'react-disqus-thread'
 import ReactMarkdown from 'react-markdown'
+import removeMarkdown from 'remove-markdown'
 import 'dropcap.js'
 
 import Page from '../Page.jsx'
@@ -16,9 +17,9 @@ class BlogPage extends React.Component {
     super(props)
   }
 
-  getContent(path) {
+  getContent(path, def) {
     log('Getting content:', path)
-    return _.get(this.props.content, path, null)
+    return _.get(this.props.content, path, def)
   }
 
   applyDropCap() {
@@ -46,6 +47,11 @@ class BlogPage extends React.Component {
     const title = this.getContent('title')
     const slug = this.getContent('slug')
     const body = this.getContent('body')
+    const tags = this.getContent('tags', [])
+    const keywords = tags.map((tag) => {return tag.title})
+    const description = body
+      ? removeMarkdown(body.slice(0, body.indexOf('\n\n')))
+      : ''
     const dropcap = body ? body.slice(0, 1) : ''
     const restOfBody = body ? body.slice(1) : ''
     const readTime = Math.ceil(_.words(body).length / 275)
@@ -79,10 +85,14 @@ class BlogPage extends React.Component {
 
     return (
       <Page
+        canonical={props.canonical}
+        description={description}
+        keywords={keywords}
         className='blog-page'
         content={props.content}
         globalElements={props.globalElements}
         updateRoute={props.updateRoute}
+
       >
         <h1>&ldquo;{title}&rdquo;</h1>
         <p className='blog-page-date'>
@@ -120,7 +130,8 @@ class BlogPage extends React.Component {
 }
 
 BlogPage.propTypes = {
-  content: React.PropTypes.object
+  canonical: React.PropTypes.string
+, content: React.PropTypes.object
 , globalElements: React.PropTypes.object
 , updateRoute: React.PropTypes.func.isRequired
 }
