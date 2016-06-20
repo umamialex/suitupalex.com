@@ -13,8 +13,23 @@
       size: 1em
       weight: bold
     letter-spacing: 0.1em
-    margin-top: 2em
-    margin-bottom: 2em
+    margin: 2em
+    position: relative
+    z-index: 1
+    overflow: hidden
+    &:before, &:after
+      content: '\a0'
+      background-color: #000
+      height: 0.16em
+      position: absolute
+      overflow: hidden
+      top: calc(50% - 0.08em)
+      width: calc(50% - 1em)
+    &:before
+      text-align: right
+      margin-left: -50%
+    &:after
+      margin-left: 1em
 
   &-date
     font:
