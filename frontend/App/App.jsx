@@ -3,6 +3,7 @@ import React from 'react'
 
 import Router from '../Router/Router.jsx'
 
+import pkg from '../../package.json'
 import {web as log} from 'log'
 
 import './app.sass'
@@ -13,7 +14,7 @@ class App extends React.Component {
 
     window.app = this
 
-    log('Application started.')
+    log(`Application started: v${pkg.version}`)
 
     log('Connecting to socket:', props.url)
     const socket = io(props.url)

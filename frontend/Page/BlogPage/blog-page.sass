@@ -3,10 +3,33 @@
   max-width: 50ch
   box-sizing: border-box
 
-  h1, &-date
+  h1, h2, &-date
     text:
       align: center
       transform: uppercase
+
+  h2
+    font:
+      size: 1em
+      weight: bold
+    letter-spacing: 0.1em
+    margin: 2em
+    position: relative
+    z-index: 1
+    overflow: hidden
+    &:before, &:after
+      content: '\a0'
+      background-color: #000
+      height: 0.16em
+      position: absolute
+      overflow: hidden
+      top: calc(50% - 0.08em)
+      width: calc(50% - 1em)
+    &:before
+      text-align: right
+      margin-left: -50%
+    &:after
+      margin-left: 1em
 
   &-date
     font:
@@ -25,8 +48,8 @@
 
   &-dropcap
     color: #f00
-    margin-right: 0.05em
-    margin-top: 0.145em
+    margin-right: 0.075em
+    margin-top: 0.11em !important
 
   &-previous, &-next
     margin-top: 1em

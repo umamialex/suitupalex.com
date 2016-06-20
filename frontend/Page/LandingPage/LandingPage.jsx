@@ -39,10 +39,11 @@ class LandingPage extends React.Component {
 
   applyDropCap() {
     log('Applying dropcap.')
-    window.Dropcap.layout(
-      document.querySelectorAll('.blog-page-dropcap')
-    , 3
-    )
+
+    const dropcaps = document.querySelectorAll('.blog-page-dropcap')
+    _.forEach(dropcaps, (dropcap) => {dropcap.dcapjsStrut=null})
+
+    window.Dropcap.layout(dropcaps, 3)
   }
 
   blogMapper(blog, index) {
@@ -50,6 +51,7 @@ class LandingPage extends React.Component {
     const summary = body.slice(0, body.indexOf('\n\n'))
     const dropcap = summary ? summary.slice(0, 1) : ''
     const restOfBody = summary ? summary.slice(1) : ''
+    const readTime = Math.ceil(_.words(body).length / 275)
 
     const formattedDate = moment(blog.publishDate).format('MMMM Do, YYYY')
 
@@ -58,11 +60,21 @@ class LandingPage extends React.Component {
     return (
       <div className='blog-post' key={index}>
         <h2>&ldquo;{blog.title}&rdquo;</h2>
-        <p className='blog-page-date'>{formattedDate}</p>
+        <p className='blog-page-date'>
+          {formattedDate} | {readTime} minute read
+        </p>
         <hr/>
         <span className='blog-page-dropcap'>{dropcap}</span>
         <ReactMarkdown
           className='blog-page-body'
+          renderers={{
+            Link: props => (
+              <a
+                href={props.href}
+                target={props.href.indexOf('/') === 0 ? '' : '_blank'}
+              >{props.children}</a>
+            )
+          }}
           source={restOfBody}
         />
         <p>

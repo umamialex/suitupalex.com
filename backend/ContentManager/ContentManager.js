@@ -5,14 +5,17 @@ const contentful = require('contentful')
 class ContentManager {
   constructor(options) {
     this.log = options.log
+    this.isProduction = options.isProduction
 
     this.client = contentful.createClient({
       space: options.space
-    , accessToken: options.accessToken
-    , host: options.isProduction ? undefined : 'preview.contentful.com'
+    , accessToken: this.isProduction
+        ? options.productionAccessToken
+        : options.previewAccessToken
+    , host: this.isProduction ? undefined : 'preview.contentful.com'
     })
 
-    this.log('Production environment:', options.isProduction)
+    this.log('Production environment:', this.isProduction)
 
     this.entryReducer = this.entryReducer.bind(this)
 
@@ -80,7 +83,7 @@ class ContentManager {
       case 'blogPost': {
         fields.date = new Date(fields.publishDate).getTime()
 
-        if (fields.date > new Date().getTime()){
+        if (this.isProduction && fields.date > new Date().getTime()){
           return result
         }
 

@@ -22,11 +22,12 @@ class BlogPage extends React.Component {
   }
 
   applyDropCap() {
+    const dropcap = this.refs.dropcap
+
     log('Applying dropcap.')
-    window.Dropcap.layout(
-      document.querySelectorAll('.blog-page-dropcap')
-    , 3
-    )
+
+    dropcap.dcapjsStrut = null
+    window.Dropcap.layout(dropcap, 3)
   }
 
   componentDidMount() {
@@ -47,6 +48,7 @@ class BlogPage extends React.Component {
     const body = this.getContent('body')
     const dropcap = body ? body.slice(0, 1) : ''
     const restOfBody = body ? body.slice(1) : ''
+    const readTime = Math.ceil(_.words(body).length / 275)
 
     const formattedDate = moment(this.getContent('publishDate'))
       .format('MMMM Do, YYYY')
@@ -83,14 +85,19 @@ class BlogPage extends React.Component {
         updateRoute={props.updateRoute}
       >
         <h1>&ldquo;{title}&rdquo;</h1>
-        <p className='blog-page-date'>{formattedDate}</p>
+        <p className='blog-page-date'>
+          {formattedDate} | {readTime} minute read
+        </p>
         <hr/>
-        <span className='blog-page-dropcap'>{dropcap}</span>
+        <span className='blog-page-dropcap' ref='dropcap'>{dropcap}</span>
         <ReactMarkdown
           className='blog-page-body'
           renderers={{
             Link: props => (
-              <a href={props.href} target='_blank'>{props.children}</a>
+              <a
+                href={props.href}
+                target={props.href.indexOf('/') === 0 ? '' : '_blank'}
+              >{props.children}</a>
             )
           }}
           source={restOfBody}
