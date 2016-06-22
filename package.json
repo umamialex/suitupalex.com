@@ -17,7 +17,7 @@
     "url": "https://github.com/suitupalex/suitupalex.com"
   },
   "dependencies": {
-    "contentful": "^3.3.14",
+    "contentful": "^3.4.0",
     "debug": "^2.2.0",
     "hapi": "^13.4.1",
     "inert": "^4.0.0",
