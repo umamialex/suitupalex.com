@@ -22,6 +22,11 @@ class BlogPage extends React.Component {
     return _.get(this.props.content, path, def)
   }
 
+  getGlobalElement(path) {
+    log('Getting global element:', path)
+    return _.get(this.props.globalElements, path, null)
+  }
+
   applyDropCap() {
     const dropcap = this.refs.dropcap
 
@@ -50,7 +55,7 @@ class BlogPage extends React.Component {
     const tags = this.getContent('tags', [])
     const keywords = tags.map((tag) => {return tag.title})
     const description = body
-      ? removeMarkdown(body.slice(0, body.indexOf('\n\n')))
+      ? removeMarkdown(this.getContent('summary'))
       : ''
     const dropcap = body ? body.slice(0, 1) : ''
     const restOfBody = body ? body.slice(1) : ''
@@ -92,7 +97,7 @@ class BlogPage extends React.Component {
         content={props.content}
         globalElements={props.globalElements}
         updateRoute={props.updateRoute}
-
+        title={`${this.getGlobalElement('pageTitlePrefix')}${title}`}
       >
         <h1>&ldquo;{title}&rdquo;</h1>
         <p className='blog-page-date'>

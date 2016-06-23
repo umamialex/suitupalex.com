@@ -3,8 +3,10 @@
 const Hapi = require('hapi')
 const Vision = require('vision')
 const Inert = require('inert')
+const removeMarkdown = require('remove-markdown')
 
 const WebSocket = require('./WebSocket/WebSocket')
+const log = require('../../lib/log.js').httpServer
 
 class HttpServer {
   constructor(options) {
@@ -20,9 +22,12 @@ class HttpServer {
     , port: options.port
     })
 
+    this.canonical = options.canonical
+
     this.register(Vision, this.handleVisionRegister.bind(this))
     this.register(Inert)
 
+    this.get('/favicon.ico', this.handleGetFavicon.bind(this))
     this.get('/base.js', this.handleGetBaseJs.bind(this))
     this.get('/{path*}', this.handleGetWildcard.bind(this))
     this.get('/content', this.handleGetContent.bind(this))
@@ -42,6 +47,8 @@ class HttpServer {
 
   // Routes
   get(path, handler) {
+    log('Registering GET route:', path)
+
     this.server.route({
       method: 'GET'
     , path: path
@@ -51,12 +58,17 @@ class HttpServer {
 
   // Start
   start(handler) {
+    log('Starting.')
+
     this.server.start(handler || this.handleStart)
   }
 
   // Handlers
   handleVisionRegister(error) {
+    log('Registering Vision.')
+
     if (error) {
+      log('Error registering Vision:', error)
       throw error
     }
 
@@ -66,15 +78,51 @@ class HttpServer {
     })
   }
 
+  handleGetFavicon(request, response) {
+    log('Serving favicon.')
+
+    response('success')
+  }
+
   handleGetWildcard(request, response) {
-    response.view('base')
+    const cm = this.contentManager
+    const path = request.url.path
+
+    log('Serving path:', path)
+
+    const blogPost = cm.getBlogPost(path.replace('/', ''))
+
+    log('Is a blog post:', Boolean(blogPost), blogPost)
+
+    const data = blogPost
+      ? {
+          canonical: this.canonical
+        , description: removeMarkdown(blogPost.summary)
+        , keywords: blogPost.tags
+            .map((tag) => {return tag.title})
+        , title: `${cm.get('globalElements.pageTitlePrefix')}${blogPost.title}`
+        }
+      : {
+          canonical: this.canonical
+        , description: cm.get('globalElements.description')
+        , keywords: cm
+            .get('globalElements.tags')
+            .map((tag) => {return tag.title})
+        , title: cm.get('globalElements.title')
+        }
+
+    response.view('base', data)
   }
 
   handleGetBaseJs(request, response) {
+    log('Serving base.js.')
+
     response.file(this.baseJsPath)
   }
 
   handleGetContent(request, response) {
+    log('Serving content.')
+
     response(this.contentManager.data)
   }
 

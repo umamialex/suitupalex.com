@@ -24,11 +24,7 @@ class Page extends React.Component {
   render() {
     const props = this.props
 
-    const title = [
-      this.getGlobalElement('pageTitlePrefix')
-    , this.getContent('title')
-    ].join('')
-
+    const title = props.title
     const keywords = Array.isArray(props.keywords)
       ? props.keywords.join(', ')
       : ''
@@ -99,6 +95,7 @@ Page.propTypes = {
 , globalElements: React.PropTypes.object
 , keywords: React.PropTypes.array
 , updateRoute: React.PropTypes.func.isRequired
+, title: React.PropTypes.string
 }
 
 export default Page

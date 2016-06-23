@@ -1,10 +1,12 @@
 'use strict'
 
+const _ = require('lodash')
 const contentful = require('contentful')
+
+const log = require('../../lib/log').contentManager
 
 class ContentManager {
   constructor(options) {
-    this.log = options.log
     this.isProduction = options.isProduction
 
     this.client = contentful.createClient({
@@ -15,8 +17,9 @@ class ContentManager {
     , host: this.isProduction ? undefined : 'preview.contentful.com'
     })
 
-    this.log('Production environment:', this.isProduction)
+    log('Production environment:', this.isProduction)
 
+    this.get = this.get.bind(this)
     this.entryReducer = this.entryReducer.bind(this)
 
     this.fetchInterval = options.fetchInterval
@@ -25,13 +28,25 @@ class ContentManager {
     this.data = null
   }
 
+  get(path) {
+    log('Getting content:', path)
+
+    return _.get(this.data, path, null)
+  }
+
+  getBlogPost(slug) {
+    log('Getting blog post:', slug)
+
+    return _.find(this.get('blogPost'), {slug})
+  }
+
   fetch(callback) {
     const self = this
 
-    self.log('Fetching entries...')
+    log('Fetching entries...')
 
     self.client.getEntries().then(function handleGet(entries) {
-      self.log('Fetched entries:', entries)
+      log('Fetched entries:', entries)
 
       self.data = self.parse(entries)
 
@@ -49,13 +64,13 @@ class ContentManager {
   }
 
   parse(entries) {
-    this.log('Parsing entries...')
+    log('Parsing entries...')
 
     const parsed = entries.items.reduce(this.entryReducer, {})
 
     parsed.blogPost.sort(this.blogPostSorter)
 
-    this.log('Parsed entries:', parsed)
+    log('Parsed entries:', parsed)
 
     return parsed
   }
@@ -87,6 +102,7 @@ class ContentManager {
       case 'blogPost': {
         fields.date = new Date(fields.publishDate).getTime()
         fields.tags = fields.rawTags.map(this.tagMapper)
+        fields.summary = fields.body.slice(0, fields.body.indexOf('\n\n'))
 
         if (this.isProduction && fields.date > new Date().getTime()){
           return result
@@ -94,9 +110,14 @@ class ContentManager {
 
         break
       }
+      case 'globalElements': {
+        fields.tags = fields.rawTags.map(this.tagMapper)
+
+        break
+      }
     }
 
-    this.log('Reducing entry:', {fields, contentType})
+    log('Reducing entry:', {fields, contentType})
 
     if (singles.includes(contentType)) {
       result[contentType] = fields
