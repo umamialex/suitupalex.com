@@ -96,7 +96,7 @@ class HttpServer {
 
     const data = blogPost
       ? {
-          canonical: this.canonical
+          canonical: `${this.canonical}${path}`
         , description: removeMarkdown(blogPost.summary)
         , keywords: blogPost.tags
             .map((tag) => {return tag.title})
