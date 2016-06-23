@@ -22,9 +22,9 @@ $ npm run prod
 ## Run
 ```bash
 $ DEBUG='sa*' \
-  SA_CONTENTFUL_PREVIEW_ACCESS_TOKEN=preview_token
-  SA_CONTENTFUL_PRODUCTION_ACCESS_TOKEN=production_token
-  SA_CONTENTFUL_SPACE=space_id
+  SA_CONTENTFUL_PREVIEW_ACCESS_TOKEN=preview_token \
+  SA_CONTENTFUL_PRODUCTION_ACCESS_TOKEN=production_token \
+  SA_CONTENTFUL_SPACE=space_id \
   SA_PORT=8080 \
   SA_URL=http://localhost:8080 \
   SA_FETCH_INTERVAL=30 \
@@ -34,9 +34,9 @@ $ DEBUG='sa*' \
 ## Watch
 ```bash
 $ DEBUG='sa*' \
-  SA_CONTENTFUL_PREVIEW_ACCESS_TOKEN=preview_token
-  SA_CONTENTFUL_PRODUCTION_ACCESS_TOKEN=production_token
-  SA_CONTENTFUL_SPACE=space_id
+  SA_CONTENTFUL_PREVIEW_ACCESS_TOKEN=preview_token \
+  SA_CONTENTFUL_PRODUCTION_ACCESS_TOKEN=production_token \
+  SA_CONTENTFUL_SPACE=space_id \
   SA_PORT=8080 \
   SA_URL=http://localhost:8080 \
   SA_FETCH_INTERVAL=30 \

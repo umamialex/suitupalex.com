@@ -48,7 +48,7 @@ class LandingPage extends React.Component {
 
   blogMapper(blog, index) {
     const body = blog.body
-    const summary = body.slice(0, body.indexOf('\n\n'))
+    const summary = blog.summary
     const dropcap = summary ? summary.slice(0, 1) : ''
     const restOfBody = summary ? summary.slice(1) : ''
     const readTime = Math.ceil(_.words(body).length / 275)
@@ -100,6 +100,7 @@ class LandingPage extends React.Component {
         className='landing-page'
         content={props.content}
         updateRoute={props.updateRoute}
+        title={this.getGlobalElement('title')}
       >
         {blogs}
       </Page>

@@ -1,24 +1,31 @@
 doctype html
-html(lang='en')
+html
   head
-    meta(charset='utf-8')
-    meta(
-      name='viewport'
-      content='width=device-width, initial-scale=1'
-    )
-    meta(
-      name='theme-color'
-      content='#000'
-    )
+    title=title
+
+    meta(name='canonical', content=canonical)
+    meta(name='description', content=description)
+    meta(name='keywords', content=keywords.join(', ').toLowerCase())
+    meta(name='theme-color', content='#000')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    meta(property='og:title', content=title)
+    meta(property='og:url', content=canonical)
+    meta(property='og:type', content='article')
+    meta(property='og:description', content=description)
+
     link(
       rel='stylesheet'
       type='text/css'
-      href='https://fonts.googleapis.com/icon?family=Material+Icons'
-    )
-    link(
-      rel='stylesheet'
-      type='text/css'
-      href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css'
+      href=[
+        'https://cdnjs.cloudflare.com'
+      , 'ajax'
+      , 'libs'
+      , 'materialize'
+      , '0.97.6'
+      , 'css'
+      , 'materialize.min.css'
+      ].join('/')
     )
   body
     #app
