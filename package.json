@@ -20,7 +20,7 @@
     "contentful": "^3.4.0",
     "debug": "^2.2.0",
     "hapi": "^13.4.1",
-    "inert": "^4.0.0",
+    "inert": "^4.0.1",
     "pug": "^2.0.0-beta3",
     "remove-markdown": "^0.1.0",
     "socket.io": "^1.4.6",
