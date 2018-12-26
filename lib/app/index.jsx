@@ -5,6 +5,7 @@ import {
   Container,
   Header,
   Icon,
+  List,
 } from 'semantic-ui-react'
 import Confetti from 'react-confetti'
 import React from 'react'
@@ -118,7 +119,37 @@ class App extends React.Component {
                 }}
               >SuitUpAlex</div>
             </div>
-            <div>&nbsp;Alexander Martin</div>
+            <p
+              style={{
+                fontSize: '1.5em',
+              }}
+            >
+              Alexander Martin
+            </p>
+            <List
+              items={[
+                {
+                  content: 'Entrepreneur',
+                  icon: 'industry',
+                },
+                {
+                  content: 'Engineer',
+                  icon: 'code',
+                },
+                {
+                  content: 'Designer',
+                  icon: 'paint brush',
+                },
+                {
+                  content: 'Gamer',
+                  icon: 'gamepad',
+                },
+                {
+                  content: 'Traveler',
+                  icon: 'plane',
+                }
+              ]}
+            />
           </div>
         </Container>
         <div
