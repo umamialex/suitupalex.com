@@ -1,5 +1,0 @@
-#!/bin/bash
-
-printf "Starting server: \n\n"
-
-node backend/server.js
