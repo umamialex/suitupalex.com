@@ -1,0 +1,10 @@
+/coverage
+/reports
+/dist/*
+/node_modules
+
+.DS_Store
+.nyc_output
+run.fish
+
+!/dist/_redirects

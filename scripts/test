@@ -1,0 +1,24 @@
+#!/bin/bash
+
+printf "Running tests:\n\n"
+
+./scripts/lint
+lintResult=$?
+
+printf "Running Jest:\n\n"
+if [ "$IS_CI" = "true" ]; then
+  DEBUG="agg:test" \
+  NODE_ENV=test \
+  TZ="America/Chicago" \
+  jest --ci --testResultsProcessor="jest-junit" --runInBand
+else
+  DEBUG="agg:test" \
+  NODE_ENV=test \
+  TZ="America/Chicago" \
+  jest --runInBand $1 $2 $3 $4
+fi
+jestResult=$?
+
+echo "Finished tests."
+
+! (( $lintResult | $jestResult ))

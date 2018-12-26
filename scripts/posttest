@@ -1,0 +1,11 @@
+#!/bin/bash
+
+printf "Running post test tasks:\n\n"
+
+if [ "$IS_CI" = "true" ]; then
+  printf "Running codecov coverage:\n\n"
+
+  codecov
+fi
+
+echo "Finished post test tasks."

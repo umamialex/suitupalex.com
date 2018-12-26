@@ -1,0 +1,13 @@
+'use strict'
+
+const browserSync = require('browser-sync').create()
+const historyApiFallback = require('connect-history-api-fallback')
+
+browserSync.init({
+  files: ['dist'],
+  open: false,
+  server: {
+    baseDir: 'dist',
+    middleware: [historyApiFallback()],
+  },
+})

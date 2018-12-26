@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo "Watching pug:"
+
+pug \
+  -o ./dist \
+  -O ./templates/options.json \
+  -w \
+  -P \
+  ./templates

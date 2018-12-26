@@ -1,0 +1,10 @@
+{
+  "env": {
+    "jquery": true,
+    "serviceworker": true
+  },
+  "extends": ["ctrl-react"],
+  "globals": {
+    "pkg": true
+  }
+}

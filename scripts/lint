@@ -1,0 +1,44 @@
+#!/bin/bash
+
+printf "Running ESLint:\n\n"
+if [ "$IS_CI" = "true" ]; then
+  # JUnit Report
+  eslint \
+    --format junit \
+    --output-file reports/junit/eslint.xml \
+    --ext .js \
+    --ext .jsx \
+    .
+else
+  # CLI Report
+  eslint \
+    --format stylish \
+    --ext .js \
+    --ext .jsx \
+    .
+fi
+eslintResult=$?
+
+printf "Running SASS linter:\n\n"
+if [ "$IS_CI" = "true" ]; then
+  sass-lint \
+    --config .sass-lint.yml \
+    --format junit \
+    --output reports/junit/sass-lint.xml \
+    'lib/**/*.scss'
+else
+  sass-lint \
+    --config .sass-lint.yml \
+    --format stylish \
+    --verbose \
+    'lib/**/*.scss'
+fi
+sassLintResult=$?
+
+printf "Running pug linter:\n\n"
+pug-lint ./templates/*.pug
+pugLintResult=$?
+
+echo "Finished linting."
+
+! (( $eslintResult | $sassLintResult | $pugLintResult ))
