@@ -1,10 +1,19 @@
-body {
+#app,
+body,
+html {
   color: #00f;
   font-family: Roboto;
   font-size: 16px;
 }
 
-.fit {
-  display: inline-block;
-  white-space: nowrap;
+#app {
+  .fit {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  .header {
+    color: #00f;
+    font-family: PT Serif;
+  }
 }

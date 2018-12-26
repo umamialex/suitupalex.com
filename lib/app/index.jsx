@@ -4,17 +4,58 @@ import './style.scss'
 import {
   Container,
   Header,
+  Icon,
 } from 'semantic-ui-react'
 import Confetti from 'react-confetti'
 import React from 'react'
 import fitty from 'fitty'
+
+class Project extends React.Component {
+  render() {
+    const {
+      props,
+    } = this
+
+    const {
+      dates,
+      isBig,
+      isInverted,
+      role,
+      summary,
+      title,
+    } = props
+
+    return (
+      <div
+        style={{
+          color: isInverted ? '#fff' : undefined,
+          fontSize: isBig ? '1.75em' : '1em',
+          paddingBottom: '5rem',
+        }}
+      >
+        <Header
+          size='large'
+          style={{
+            color: isInverted ? '#fff' : undefined,
+          }}
+        >{title}</Header>
+        <p>
+          <b>{role}</b> &mdash; {dates}
+          <br/>
+          <b>Austin, TX</b>
+        </p>
+        <p><Icon name='quote left'/>{summary}</p>
+      </div>
+    )
+  }
+}
 
 class App extends React.Component {
   state = {}
 
   getWindowDimensions = () => {
     this.setState({
-      height: window.innerHeight,
+      height: document.documentElement.scrollHeight,
       width: window.innerWidth,
     })
   }
@@ -80,6 +121,55 @@ class App extends React.Component {
             <div>&nbsp;Alexander Martin</div>
           </div>
         </Container>
+        <div
+          style={{
+            minHeight: '100vh',
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: '#00f',
+              paddingTop: '4.5rem',
+            }}
+          >
+            <Container>
+              <Project
+                dates='Current'
+                isBig
+                isInverted
+                role='Founder & CEO'
+                summary='The homepage for esports and professional gaming.'
+                title='athletes.gg'
+              />
+            </Container>
+          </div>
+          <div
+            style={{
+              paddingTop: '5rem',
+            }}
+          >
+            <Container>
+              <Project
+                dates='Jan &rsquo;17 &ndash; Dec &rsquo;18'
+                role='Integrations and Professional Services Manager'
+                summary='The next generation of CTI.'
+                title='Tenfold'
+              />
+              <Project
+                dates='Dec &rsquo;15 &ndash; Jan &rsquo;17'
+                role='Lead Software Engineer'
+                summary='Leaders in the digital agency space.'
+                title='Springbox'
+              />
+              <Project
+                dates='Aug &rsquo;14 &ndash; Oct &rsquo;15'
+                role='Founding Software Engineer'
+                summary='Have better conversations with customers.'
+                title='Help.com'
+              />
+            </Container>
+          </div>
+        </div>
       </div>
     )
   }
