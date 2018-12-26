@@ -6,29 +6,39 @@ import {
   Header,
 } from 'semantic-ui-react'
 import React from 'react'
+import fitty from 'fitty'
 
 class App extends React.Component {
+  componentDidMount() {
+    fitty('.fit', {
+      maxSize: 130,
+    })
+  }
+
   render() {
     return (
       <Container>
         <div
           style={{
-            alignItems: 'center',
+            alignItems: 'stretch',
             display: 'flex',
+            flexDirection: 'column',
             height: '100vh',
+            justifyContent: 'center',
           }}
         >
           <div>
-            <Header
+            <div
+              className='fit'
               style={{
                 color: '#00f',
                 fontFamily: 'PT Serif',
-                fontSize: '5em',
+                lineHeight: 'normal',
                 marginBottom: 0,
               }}
-            >SuitUpAlex</Header>
-            <span>&nbsp;Alexander Martin</span>
+            >SuitUpAlex</div>
           </div>
+          <div>&nbsp;Alexander Martin</div>
         </div>
       </Container>
     )
