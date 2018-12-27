@@ -21,6 +21,7 @@ class Project extends React.Component {
     } = this
 
     const {
+      bullets = [],
       dates,
       isBig,
       isInverted,
@@ -56,6 +57,10 @@ class Project extends React.Component {
           <b>Austin, TX</b>
         </p>
         <p><Icon name='quote left'/>{summary}</p>
+        <List
+          bulleted
+          items={bullets}
+        />
       </div>
     )
   }
@@ -116,8 +121,10 @@ class Section extends React.Component {
           alignItems: 'stretch',
           display: 'flex',
           flexDirection: 'column',
-          height: '100vh',
           justifyContent: 'center',
+          minHeight: '100vh',
+          paddingBottom: '10rem',
+          paddingTop: '10rem',
         }}
       >
         <Container>
@@ -268,6 +275,34 @@ class App extends React.Component {
         <Separator>Previous</Separator>
         <Section>
           <Project
+            bullets={[
+              {
+                content: 'Managed the largest engineering team.',
+              },
+              {
+                content: 'Product managed new and current CTI integrations.',
+              },
+              {
+                content: [
+                  'Managed relationships with partners and enterprise',
+                  'customers such as',
+                  'Adobe,',
+                  'Simple,',
+                  'Avaya,',
+                  'ServiceNow,',
+                  'and Marketo.',
+                ].join(' '),
+              },
+              {
+                content: 'Implemented scalable product processes and tools.',
+              },
+              {
+                content: 'Main technical resource for enterprise presales.',
+              },
+              {
+                content: 'Built Genesys integration from scratch.',
+              },
+            ]}
             dates='Jan &rsquo;17 &ndash; Dec &rsquo;18'
             link='https://tenfold.com'
             role='Integrations and Professional Services Manager'
@@ -275,6 +310,23 @@ class App extends React.Component {
             title='Tenfold'
           />
           <Project
+            bullets={[
+              {
+                content: [
+                  'Lead many projects for clients such as',
+                  'HomeAway,',
+                  'Dell,',
+                  'Corpus Christi,',
+                  'and Nestle.',
+                ].join(' '),
+              },
+              {
+                content: 'Implemented improved engineering process and tools.',
+              },
+              {
+                content: 'Main technical resource for presales.',
+              },
+            ]}
             dates='Dec &rsquo;15 &ndash; Jan &rsquo;17'
             link='https://springbox.com'
             role='Lead Software Engineer'
@@ -282,6 +334,15 @@ class App extends React.Component {
             title='Springbox'
           />
           <Project
+            bullets={[
+              {
+                content: 'Very first employee.',
+              },
+              {
+                content:
+                  'Laid the engineering foundation for both code and culture.',
+              },
+            ]}
             dates='Aug &rsquo;14 &ndash; Oct &rsquo;15'
             link='https://help.com'
             role='Founding Software Engineer'
