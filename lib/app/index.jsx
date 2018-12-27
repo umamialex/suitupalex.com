@@ -3,6 +3,7 @@ import './style.scss'
 
 import {
   Container,
+  Divider,
   Header,
   Icon,
   List,
@@ -46,6 +47,57 @@ class Project extends React.Component {
           <b>Austin, TX</b>
         </p>
         <p><Icon name='quote left'/>{summary}</p>
+      </div>
+    )
+  }
+}
+
+class Separator extends React.Component {
+  render() {
+    return (
+      <Container>
+        <Divider
+          horizontal
+          style={{
+            color: '#00f',
+          }}
+        >
+          <Icon
+            flipped='horizontal'
+            name='cut'
+          />
+          <span
+            style={{
+              fontSize: '0.8rem',
+              margin: '0 1rem',
+            }}
+          >
+            {this.props.children}
+          </span>
+          <Icon
+            name='cut'
+          />
+        </Divider>
+      </Container>
+    )
+  }
+}
+
+class Section extends React.Component {
+  render() {
+    return (
+      <div
+        style={{
+          alignItems: 'stretch',
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100vh',
+          justifyContent: 'center',
+        }}
+      >
+        <Container>
+          {this.props.children}
+        </Container>
       </div>
     )
   }
@@ -98,108 +150,75 @@ class App extends React.Component {
     return (
       <div>
         {confetti}
-        <Container>
-          <div
-            style={{
-              alignItems: 'stretch',
-              display: 'flex',
-              flexDirection: 'column',
-              height: '100vh',
-              justifyContent: 'center',
-            }}
-          >
-            <div>
-              <div
-                className='fit'
-                style={{
-                  color: '#00f',
-                  fontFamily: 'PT Serif',
-                  lineHeight: 'normal',
-                  marginBottom: 0,
-                }}
-              >SuitUpAlex</div>
-            </div>
-            <p
+        <Section>
+          <div>
+            <div
+              className='fit'
               style={{
-                fontSize: '1.5em',
+                color: '#00f',
+                fontFamily: 'PT Serif',
+                lineHeight: 'normal',
+                marginBottom: 0,
               }}
-            >
-              Alexander Martin
-            </p>
-            <List
-              items={[
-                {
-                  content: 'Entrepreneur',
-                  icon: 'industry',
-                },
-                {
-                  content: 'Engineer',
-                  icon: 'code',
-                },
-                {
-                  content: 'Designer',
-                  icon: 'paint brush',
-                },
-                {
-                  content: 'Gamer',
-                  icon: 'gamepad',
-                },
-                {
-                  content: 'Traveler',
-                  icon: 'plane',
-                }
-              ]}
-            />
+            >SuitUpAlex</div>
           </div>
-        </Container>
-        <div
-          style={{
-            alignItems: 'stretch',
-            display: 'flex',
-            flexDirection: 'column',
-            height: '100vh',
-            justifyContent: 'center',
-            margin: '5rem 0',
-          }}
-        >
-          <Container
+          <p
             style={{
-              backgroundColor: '#00f',
-              color: '#fff',
-              padding: '2rem',
+              fontSize: '1.5em',
             }}
           >
-            <p
-              style={{
-                fontSize: '1.5rem',
-              }}
-            >
-              <Header
-                size='large'
-                style={{
-                  color: '#fff',
-                }}
-              >Bio</Header>
-              <p>
-                I started building things when I was 8, making games with BASIC and Game Maker. When you make games, you need to show &rsquo;em off. So I learned web development as well.
-              </p>
-              <p>
-                For some weird reason I decided to go to college for medicine. It took until senior year for me to come to my senses and start building again.
-              </p>
-              <p>
-                I left for the world of start ups and never looked back.
-              </p>
+            Alexander Martin
+          </p>
+          <List
+            items={[
+              {
+                content: 'Entrepreneur',
+                icon: 'industry',
+              },
+              {
+                content: 'Engineer',
+                icon: 'code',
+              },
+              {
+                content: 'Designer',
+                icon: 'paint brush',
+              },
+              {
+                content: 'Gamer',
+                icon: 'gamepad',
+              },
+              {
+                content: 'Traveler',
+                icon: 'plane',
+              }
+            ]}
+          />
+        </Section>
+        <Separator>Bio</Separator>
+        <Section>
+          <p
+            style={{
+              fontSize: '1.5rem',
+            }}
+          >
+            <Header
+              size='large'
+            >Bio</Header>
+            <p>
+              I started building things when I was 8, making games with BASIC and Game Maker. When you make games, you need to show &rsquo;em off. So I learned web development as well.
             </p>
-          </Container>
-        </div>
-        <div
-          style={{
-            minHeight: '100vh',
-          }}
-        >
+            <p>
+              For some weird reason I decided to go to college for medicine. It took until senior year for me to come to my senses and start building again.
+            </p>
+            <p>
+              I left for the world of start ups and never looked back.
+            </p>
+          </p>
+        </Section>
+        <Separator>Current</Separator>
+        <Section>
           <div
             style={{
-              backgroundColor: '#00f',
               paddingTop: '4.5rem',
             }}
           >
@@ -207,40 +226,34 @@ class App extends React.Component {
               <Project
                 dates='Current'
                 isBig
-                isInverted
                 role='Founder & CEO'
                 summary='The homepage for esports and professional gaming.'
                 title='athletes.gg'
               />
             </Container>
           </div>
-          <div
-            style={{
-              paddingTop: '5rem',
-            }}
-          >
-            <Container>
-              <Project
-                dates='Jan &rsquo;17 &ndash; Dec &rsquo;18'
-                role='Integrations and Professional Services Manager'
-                summary='The next generation of CTI.'
-                title='Tenfold'
-              />
-              <Project
-                dates='Dec &rsquo;15 &ndash; Jan &rsquo;17'
-                role='Lead Software Engineer'
-                summary='Leaders in the digital agency space.'
-                title='Springbox'
-              />
-              <Project
-                dates='Aug &rsquo;14 &ndash; Oct &rsquo;15'
-                role='Founding Software Engineer'
-                summary='Have better conversations with customers.'
-                title='Help.com'
-              />
-            </Container>
-          </div>
-        </div>
+        </Section>
+        <Separator>Previous</Separator>
+        <Section>
+          <Project
+            dates='Jan &rsquo;17 &ndash; Dec &rsquo;18'
+            role='Integrations and Professional Services Manager'
+            summary='The next generation of CTI.'
+            title='Tenfold'
+          />
+          <Project
+            dates='Dec &rsquo;15 &ndash; Jan &rsquo;17'
+            role='Lead Software Engineer'
+            summary='Leaders in the digital agency space.'
+            title='Springbox'
+          />
+          <Project
+            dates='Aug &rsquo;14 &ndash; Oct &rsquo;15'
+            role='Founding Software Engineer'
+            summary='Have better conversations with customers.'
+            title='Help.com'
+          />
+        </Section>
       </div>
     )
   }
