@@ -24,6 +24,7 @@ class Project extends React.Component {
       dates,
       isBig,
       isInverted,
+      link,
       role,
       summary,
       title,
@@ -38,11 +39,17 @@ class Project extends React.Component {
         }}
       >
         <Header
-          size='large'
-          style={{
-            color: isInverted ? '#fff' : undefined,
-          }}
-        >{title}</Header>
+            size='large'
+            style={{
+              color: isInverted ? '#fff' : undefined,
+            }}
+        >
+          <a
+            href={link}
+            target='_blank'
+            rel='noreferrer noopener'
+          >{title}</a>
+        </Header>
         <p>
           <b>{role}</b> &mdash; {dates}
           <br/>
@@ -249,6 +256,7 @@ class App extends React.Component {
             <Container>
               <Project
                 dates='Current'
+                link='https://athletes.gg'
                 isBig
                 role='Founder & CEO'
                 summary='The homepage for esports and professional gaming.'
@@ -261,18 +269,21 @@ class App extends React.Component {
         <Section>
           <Project
             dates='Jan &rsquo;17 &ndash; Dec &rsquo;18'
+            link='https://tenfold.com'
             role='Integrations and Professional Services Manager'
             summary='The next generation of CTI.'
             title='Tenfold'
           />
           <Project
             dates='Dec &rsquo;15 &ndash; Jan &rsquo;17'
+            link='https://springbox.com'
             role='Lead Software Engineer'
             summary='Leaders in the digital agency space.'
             title='Springbox'
           />
           <Project
             dates='Aug &rsquo;14 &ndash; Oct &rsquo;15'
+            link='https://help.com'
             role='Founding Software Engineer'
             summary='Have better conversations with customers.'
             title='Help.com'
