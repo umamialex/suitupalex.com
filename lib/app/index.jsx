@@ -154,6 +154,46 @@ class App extends React.Component {
         </Container>
         <div
           style={{
+            alignItems: 'stretch',
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100vh',
+            justifyContent: 'center',
+            margin: '5rem 0',
+          }}
+        >
+          <Container
+            style={{
+              backgroundColor: '#00f',
+              color: '#fff',
+              padding: '2rem',
+            }}
+          >
+            <p
+              style={{
+                fontSize: '1.5rem',
+              }}
+            >
+              <Header
+                size='large'
+                style={{
+                  color: '#fff',
+                }}
+              >Bio</Header>
+              <p>
+                I started building things when I was 8, making games with BASIC and Game Maker. When you make games, you need to show &rsquo;em off. So I learned web development as well.
+              </p>
+              <p>
+                For some weird reason I decided to go to college for medicine. It took until senior year for me to come to my senses and start building again.
+              </p>
+              <p>
+                I left for the world of start ups and never looked back.
+              </p>
+            </p>
+          </Container>
+        </div>
+        <div
+          style={{
             minHeight: '100vh',
           }}
         >
