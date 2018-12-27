@@ -12,6 +12,8 @@ import Confetti from 'react-confetti'
 import React from 'react'
 import fitty from 'fitty'
 
+const MAX_FONT_SIZE = 90
+
 class Project extends React.Component {
   render() {
     const {
@@ -54,6 +56,14 @@ class Project extends React.Component {
 
 class Separator extends React.Component {
   render() {
+    const {
+      props,
+    } = this
+
+    const {
+      children,
+    } = props
+
     return (
       <Container>
         <Divider
@@ -72,7 +82,7 @@ class Separator extends React.Component {
               margin: '0 1rem',
             }}
           >
-            {this.props.children}
+            {children}
           </span>
           <Icon
             name='cut'
@@ -85,6 +95,14 @@ class Separator extends React.Component {
 
 class Section extends React.Component {
   render() {
+    const {
+      props,
+    } = this
+
+    const {
+      children,
+    } = props
+
     return (
       <div
         style={{
@@ -96,7 +114,7 @@ class Section extends React.Component {
         }}
       >
         <Container>
-          {this.props.children}
+          {children}
         </Container>
       </div>
     )
@@ -104,6 +122,8 @@ class Section extends React.Component {
 }
 
 class App extends React.Component {
+  static MAX_FONT_SIZE = MAX_FONT_SIZE
+
   state = {}
 
   getWindowDimensions = () => {
@@ -115,7 +135,7 @@ class App extends React.Component {
 
   componentDidMount() {
     fitty('.fit', {
-      maxSize: 90,
+      maxSize: App.MAX_FONT_SIZE,
     })
 
     this.getWindowDimensions()
@@ -190,7 +210,7 @@ class App extends React.Component {
               {
                 content: 'Traveler',
                 icon: 'plane',
-              }
+              },
             ]}
           />
         </Section>
@@ -205,10 +225,14 @@ class App extends React.Component {
               size='large'
             >Bio</Header>
             <p>
-              I started building things when I was 8, making games with BASIC and Game Maker. When you make games, you need to show &rsquo;em off. So I learned web development as well.
+              I started building things when I was 8, making games with BASIC
+              and Game Maker. When you make games, you need to show &rsquo;em
+              off. So I learned web development as well.
             </p>
             <p>
-              For some weird reason I decided to go to college for medicine. It took until senior year for me to come to my senses and start building again.
+              For some weird reason I decided to go to college for medicine.
+              It took until senior year for me to come to my senses and start
+              building again.
             </p>
             <p>
               I left for the world of start ups and never looked back.
