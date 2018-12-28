@@ -206,7 +206,7 @@ class App extends React.Component {
           <List
             items={[
               {
-                content: 'Entrepreneur',
+                content: 'Workaholic',
                 icon: 'industry',
               },
               {
@@ -214,18 +214,52 @@ class App extends React.Component {
                 icon: 'code',
               },
               {
-                content: 'Designer',
+                content: 'Creator',
                 icon: 'paint brush',
               },
               {
                 content: 'Gamer',
                 icon: 'gamepad',
               },
-              {
-                content: 'Traveler',
-                icon: 'plane',
-              },
             ]}
+          />
+          <List
+            horizontal
+            items={[
+              {
+                href: 'https://instagram.com/suitupalex',
+                icon: 'instagram',
+              },
+              {
+                href: 'https://youtube.com/suitupalex',
+                icon: 'youtube',
+              },
+              {
+                href: 'https://linkedin.com/in/suitupalex',
+                icon: 'linkedin',
+              },
+              {
+                href: 'https://twitch.tv/suitupalex',
+                icon: 'twitch',
+              },
+              {
+                href: 'https://twitter.com/suitupalex',
+                icon: 'twitter',
+              },
+              {
+                href: 'https://facebook.com/suitupalex',
+                icon: 'facebook',
+              },
+            ].map((item) => {
+              item.as = 'a'
+              item.style = {textDecoration: 'none'}
+              item.target = '_blank'
+
+              return item
+            })}
+            style={{
+              marginTop: '1rem',
+            }}
           />
         </Section>
         <Separator>Bio</Separator>
@@ -244,12 +278,24 @@ class App extends React.Component {
               off. So I learned web development as well.
             </p>
             <p>
-              For some weird reason I decided to go to college for medicine.
-              It took until senior year for me to come to my senses and start
-              building again.
+              For some odd reason I decided to go to college for medicine.
+              I was still hacking away though, building mobile apps and working
+              with arduinos to make physical devices.
             </p>
             <p>
-              I left for the world of start ups and never looked back.
+              It wasn&rsquo;t until my senior year that I realized I enjoyed
+              building products. Coincidentally, my univerity had just created
+              an incubator. I joined the inaugural class as a product specialist
+              that partnered with business students to make their ideas a
+              reality.
+            </p>
+            <p>
+              I joined the world of start ups and never looked back.
+            </p>
+            <p>
+              Outside of work, I&rsquo;m a classically trained musician and
+              singer, competitive Smashbros player, mobile photography
+              enthusiast, amateur cook, and an avid powerlifter.
             </p>
           </p>
         </Section>
@@ -348,6 +394,24 @@ class App extends React.Component {
             role='Founding Software Engineer'
             summary='Have better conversations with customers.'
             title='Help.com'
+          />
+          <Project
+            bullets={[
+              {
+                content: 'Member of the inaugural Fordham Foundry class.',
+              },
+              {
+                content: [
+                  'Partnered with Fordham business students and local Bronx',
+                  'entrepreneurs to turn ideas into products.',
+                ].join(' '),
+              },
+            ]}
+            dates='Sept &rsquo;12 &ndash; Aug &rsquo;14'
+            link='https://martinexp.com'
+            role='Founder'
+            summary='Your product team.'
+            title='Martin Exp LLC'
           />
         </Section>
       </div>
