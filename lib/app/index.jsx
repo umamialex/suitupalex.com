@@ -26,10 +26,19 @@ class Project extends React.Component {
       isBig,
       isInverted,
       link,
+      location = 'Austin, TX',
       role,
       summary,
       title,
     } = props
+
+    const titleLink = link
+      ? <a
+          href={link}
+          target='_blank'
+          rel='noreferrer noopener'
+        >{title}</a>
+      : title
 
     return (
       <div
@@ -44,17 +53,11 @@ class Project extends React.Component {
             style={{
               color: isInverted ? '#fff' : undefined,
             }}
-        >
-          <a
-            href={link}
-            target='_blank'
-            rel='noreferrer noopener'
-          >{title}</a>
-        </Header>
+        >{titleLink}</Header>
         <p>
           <b>{role}</b> &mdash; {dates}
           <br/>
-          <b>Austin, TX</b>
+          <b>{location}</b>
         </p>
         <p><Icon name='quote left'/>{summary}</p>
         <List
@@ -408,7 +411,7 @@ class App extends React.Component {
               },
             ]}
             dates='Sept &rsquo;12 &ndash; Aug &rsquo;14'
-            link='https://martinexp.com'
+            location='New York, NY'
             role='Founder'
             summary='Your product team.'
             title='Martin Exp LLC'
