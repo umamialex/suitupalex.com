@@ -1,64 +1,43 @@
 {
   "name": "suitupalex.com",
-  "version": "2.0.0",
-  "description": "Personal website for SuitUpAlex.",
-  "main": "spa.jsx",
-  "repository": "git@github.com:suitupalex/suitupalex.com",
-  "author": "Alexander Martin <alex@suitupalex.com>",
-  "license": "MIT",
+  "version": "0.1.0",
   "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "3.3.1",
+    "styled-components": "^5.0.1"
+  },
   "scripts": {
-    "build": "./scripts/build",
-    "lint": "./scripts/lint",
-    "posttest": "./scripts/posttest",
-    "precommit-message": "./scripts/precommit-message",
-    "prod": "./scripts/prod",
-    "test": "./scripts/test",
-    "watch": "./scripts/watch",
-    "watch-browser-sync": "./scripts/watch-browser-sync",
-    "watch-pug": "./scripts/watch-pug",
-    "watch-webpack": "./scripts/watch-webpack"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-proposal-class-properties": "^7.2.3",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/preset-react": "^7.0.0",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.4",
-    "babel-plugin-syntax-trailing-function-commas": "^6.22.0",
-    "browser-sync": "^2.26.3",
-    "compass-mixins": "^0.12.10",
-    "concurrently": "^4.1.0",
-    "connect-history-api-fallback": "^1.5.0",
-    "css-loader": "^2.1.0",
-    "eslint": "^5.11.0",
-    "eslint-config-ctrl": "^5.0.0",
-    "eslint-config-ctrl-react": "^6.0.0",
-    "eslint-config-react": "^1.1.7",
-    "eslint-plugin-babel": "^5.3.0",
-    "file-loader": "^3.0.1",
-    "fitty": "^2.2.6",
-    "jsx-loader": "^0.13.2",
-    "node-sass": "^4.11.0",
-    "prop-types": "^15.6.2",
-    "pug": "^2.0.3",
-    "pug-cli": "^1.0.0-alpha6",
-    "pug-lint": "^2.5.0",
-    "pug-lint-config-ctrl": "^1.3.0",
-    "react": "^16.7.0",
-    "react-confetti": "^2.3.0",
-    "react-dom": "^16.7.0",
-    "react-helmet": "^5.2.0",
-    "sass-lint": "^1.12.1",
-    "sass-lint-config-ctrl": "^2.0.1",
-    "sass-loader": "^7.1.0",
-    "sass-resources-loader": "^2.0.0",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.84.0",
-    "style-loader": "^0.23.1",
-    "url-loader": "^1.1.2",
-    "webpack": "^4.28.2",
-    "webpack-cli": "^3.1.2"
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3"
   }
 }

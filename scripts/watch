@@ -1,5 +1,0 @@
-#!/bin/bash
-
-printf "\n\nWatching with webpack, pug, and browser-sync:\n\n"
-
-concurrently --raw "npm:watch-*"
