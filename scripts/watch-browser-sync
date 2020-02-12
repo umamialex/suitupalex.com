@@ -1,5 +1,0 @@
-#!/bin/bash
-
-echo "Watching browser-sync:"
-
-node ./scripts/browser-sync-spa.js

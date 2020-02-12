@@ -1,6 +1,0 @@
-#!/bin/bash
-
-echo "Watching webpack:"
-
-NODE_ENV=development \
-webpack --mode=development --progress --colors --watch
