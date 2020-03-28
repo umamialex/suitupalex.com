@@ -15,7 +15,7 @@ import hawtie from './hawtie.jpg'
 const theme = createMuiTheme({
   palette: {
     background: {
-      paper: 'rgba(255, 255, 255, 0.5)',
+      paper: 'rgba(255, 255, 255, 0.6)',
     },
   },
 })
