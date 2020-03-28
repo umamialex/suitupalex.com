@@ -2,6 +2,9 @@
   "name": "suitupalex.com",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">10.0.0"
+  },
   "dependencies": {
     "@material-ui/core": "^4.9.7",
     "@testing-library/jest-dom": "^5.3.0",
