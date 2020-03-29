@@ -115,11 +115,11 @@ function App() {
 
 const Page = styled.div`
   display: flex;
-  overflow-x: hidden;
   justify-content: space-between;
 
   @media (max-width: 1000px) {
     flex-direction: column;
+    overflow-x: hidden;
     padding-right: 0;
   }
 `
