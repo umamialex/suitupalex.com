@@ -5,6 +5,8 @@ import {
   deepPurple,
   green,
   indigo,
+  lightBlue,
+  orange,
   pink,
   red,
 } from '@material-ui/core/colors'
@@ -13,9 +15,18 @@ import {
 } from '@material-ui/core/styles'
 import {
   ExpandMore,
+  GitHub,
+  Instagram,
+  LinkedIn,
+  Twitter,
 } from '@material-ui/icons'
+import {
+  Discord,
+  Gmail,
+} from 'mdi-material-ui'
 import styled from 'styled-components'
 import Appearance from './Appearance'
+import QuickLink from './QuickLink'
 import hawtie from './hawtie.png'
 import tenfold from './tenfold.svg'
 
@@ -56,6 +67,33 @@ function App() {
     <ThemeProvider>
       <Page>
         <Info>
+          <QuickLinks>
+            <QuickLink
+              Icon={Instagram}
+              color={orange.A400}
+              link="https://instagram.com/suitupalex"
+            />
+            <QuickLink
+              Icon={Twitter}
+              color={lightBlue.A400}
+              link="https://twitter.com/suitupalex"
+            />
+            <QuickLink
+              Icon={LinkedIn}
+              color={blue[800]}
+              link="https://linkedin.com/in/suitupalex"
+            />
+            <QuickLink
+              Icon={GitHub}
+              color="#000"
+              link="https://github.com/suitupalex"
+            />
+            <QuickLink
+              Icon={Gmail}
+              color={red[500]}
+              link="mailto:alex@suitupalex.com"
+            />
+          </QuickLinks>
           <InfoContainer>
             <Name>
               A
@@ -228,7 +266,7 @@ const Info = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   position: sticky;
   top: 0em;
   min-height: 100vh;
@@ -243,6 +281,18 @@ const Info = styled.div`
     margin-left: 0;
     position: initial;
     width: 100%;
+  }
+`
+
+const QuickLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-right: 5em;
+  margin-top: 3em;
+
+  @media (max-width: 1000px) {
+    flex-direction: row;
+    margin-right: 0;
   }
 `
 
