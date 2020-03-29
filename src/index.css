@@ -1,28 +1,43 @@
 @import url('https://fonts.googleapis.com/css?family=VT323');
 
 @-webkit-keyframes GradientBackground {
-		0%{background-position:0% 50%}
-		50%{background-position:100% 50%}
-		100%{background-position:0% 50%}
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 @-moz-keyframes GradientBackground {
-		0%{background-position:0% 50%}
-		50%{background-position:100% 50%}
-		100%{background-position:0% 50%}
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 @keyframes GradientBackground {
-		0%{background-position:0% 50%}
-		50%{background-position:100% 50%}
-		100%{background-position:0% 50%}
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes Pulse {
+  0% {
+    fill: #ff1744;
+    transform: scale(2) rotate(0deg);
+  }
+  25% {
+    fill: #ff80ab;
+    transform: scale(3) rotate(-10deg);
+  }
+  50% {
+    fill: #ff1744;
+    transform: scale(2) rotate(0deg);
+  }
+  75% {
+    fill: #ffc400;
+    transform: scale(3) rotate(10deg);
+  }
+  100% {
+    fill: #ff1744;
+    transform: scale(2) rotate(0deg);
+  }
 }
 
 body {
   margin: 0;
-
-	background: linear-gradient(270deg, #f0bcbc, #d8d7ba);
-	background-size: 400% 400%;
-
-	-webkit-animation: GradientBackground 18s ease infinite;
-	-moz-animation: GradientBackground 18s ease infinite;
-	animation: GradientBackground 18s ease infinite;
 }
