@@ -12,6 +12,38 @@ import {
 import styled from 'styled-components'
 import hawtie from './hawtie.png'
 
+const heart = [
+  'M23.6',
+  '0c-3.4',
+  '0-6.3',
+  '2.7-7.6',
+  '5.6C14.7',
+  '2.7',
+  '11.8',
+  '0',
+  '8.4',
+  '0C3.8',
+  '0',
+  '0',
+  '3.8',
+  '0',
+  '8.4c0',
+  '9.4',
+  '9.5',
+  '11.9',
+  '16',
+  '21.2c6.1-9.3',
+  '16-12.1',
+  '16-21.2C32',
+  '3.8',
+  '28.2',
+  '0',
+  '23.6',
+  '0z',
+].join(',')
+
+const heartBox = '0 0 32 29.6'
+
 function App() {
   return (
     <ThemeProvider>
@@ -28,19 +60,19 @@ function App() {
             <HawtieContainer>
               <HawtieBackground />
               <BigHeart
-                viewBox="0 0 32 29.6"
+                viewBox={heartBox}
               >
-                <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+                <path d={heart} />
               </BigHeart>
               <AnimatedHeart
-                viewBox="0 0 32 29.6"
+                viewBox={heartBox}
               >
-                <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+                <path d={heart} />
               </AnimatedHeart>
               <Heart
-                viewBox="0 0 32 29.6"
+                viewBox={heartBox}
               >
-                <path d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"/>
+                <path d={heart} />
               </Heart>
               <Hawtie
                 src={hawtie}
@@ -93,9 +125,10 @@ const Info = styled.div`
   justify-content: flex-end;
   position: sticky;
   top: 0em;
-  margin-left: 2em;
   margin-bottom: -7em;
-  height: 100vh;
+  margin-left: 2em;
+  padding-top: 2em;
+  min-height: 100vh;
 
   @media (max-width: 1000px) {
     font-size: 0.8em;
