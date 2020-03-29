@@ -9,6 +9,9 @@ import {
 import {
   ThemeProvider,
 } from '@material-ui/core/styles'
+import {
+  ExpandMore,
+} from '@material-ui/icons'
 import styled from 'styled-components'
 import hawtie from './hawtie.png'
 
@@ -79,6 +82,11 @@ function App() {
               />
             </HawtieContainer>
           </InfoContainer>
+          <ScrollIndicator>
+            <ExpandMore
+              fontSize="large"
+            />
+          </ScrollIndicator>
         </Info>
         <Boxes>
           <Box
@@ -125,15 +133,18 @@ const Info = styled.div`
   justify-content: flex-end;
   position: sticky;
   top: 0em;
-  margin-bottom: -7em;
-  margin-left: 2em;
-  padding-top: 2em;
   min-height: 100vh;
 
+  @supports (-webkit-appearance:none) {
+    min-height: calc(100vh - 56px);
+  }
+
   @media (max-width: 1000px) {
+    align-items: center;
     font-size: 0.8em;
-    margin-top: 2em;
+    margin-left: 0;
     position: initial;
+    width: 100%;
   }
 `
 
@@ -141,10 +152,24 @@ const InfoContainer = styled.div`
   align-items: flex-end;
   display: flex;
   flex-direction: column;
+  margin-top: 4em;
+  margin-bottom: -7em;
   margin-right: 5em;
 
   @media (max-width: 1000px) {
     margin-right: 0;
+  }
+`
+
+const ScrollIndicator = styled.div`
+  color: ${indigo.A100};
+  display: none;
+  padding-bottom: 2em;
+  text-align: center;
+
+
+  @media (max-width: 1000px) {
+    display: block;
   }
 `
 
