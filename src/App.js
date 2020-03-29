@@ -94,7 +94,8 @@ const Info = styled.div`
   position: sticky;
   top: 0em;
   margin-left: 2em;
-  min-height: 100vh;
+  margin-bottom: -7em;
+  height: 100vh;
 
   @media (max-width: 1000px) {
     font-size: 0.8em;
@@ -108,7 +109,6 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-right: 5em;
-  margin-bottom: 0em;
 
   @media (max-width: 1000px) {
     margin-right: 0;
