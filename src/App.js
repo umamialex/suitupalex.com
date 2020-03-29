@@ -75,8 +75,13 @@ function App() {
 
 const Page = styled.div`
   display: flex;
-  padding-right: 15vw;
+  overflow-x: hidden;
   justify-content: space-between;
+
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    padding-right: 0;
+  }
 `
 
 const Info = styled.div`
@@ -88,7 +93,14 @@ const Info = styled.div`
   justify-content: flex-end;
   position: sticky;
   top: 0em;
-  height: 100vh;
+  margin-left: 2em;
+  min-height: 100vh;
+
+  @media (max-width: 1000px) {
+    font-size: 0.8em;
+    margin-top: 2em;
+    position: initial;
+  }
 `
 
 const InfoContainer = styled.div`
@@ -97,9 +109,14 @@ const InfoContainer = styled.div`
   flex-direction: column;
   margin-right: 5em;
   margin-bottom: 0em;
+
+  @media (max-width: 1000px) {
+    margin-right: 0;
+  }
 `
 
 const Name = styled.div`
+  white-space: nowrap;
   font-family: VT323;
   font-size: 4em;
   margin-bottom: 1rem;
