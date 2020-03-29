@@ -3,7 +3,7 @@ import {
   Paper,
 } from '@material-ui/core'
 import {
-  red,
+  indigo,
 } from '@material-ui/core/colors'
 import {
   ThemeProvider,
@@ -69,7 +69,7 @@ const Hawtie = styled.img`
 `
 
 const Marker = styled.div`
-  color: ${red.A400};
+  color: ${indigo.A400};
   display: flex;
   flex-direction: row;
   font-family: VT323;
