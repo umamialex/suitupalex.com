@@ -195,23 +195,6 @@ function App() {
             </BoxWrapper>
           </Box>
           <Box
-            color={blue}
-          >
-            <BoxWrapper>
-              <Title>Tenfold</Title>
-              <SubTitle>Integration and Professional Services Manager</SubTitle>
-              <BoxContent>
-                <Tenfold
-                  src={tenfold}
-                />
-              </BoxContent>
-            </BoxWrapper>
-            <Dates>
-              <Start>Jan 2017</Start>
-              <End>Current (Contractor)</End>
-            </Dates>
-          </Box>
-          <Box
             color={green}
           >
             <BoxWrapper>
@@ -241,6 +224,23 @@ function App() {
             <Dates>
               <Start>Oct 2019</Start>
               <End>Current (Contractor)</End>
+            </Dates>
+          </Box>
+          <Box
+            color={blue}
+          >
+            <BoxWrapper>
+              <Title>Tenfold</Title>
+              <SubTitle>Integration and Professional Services Manager</SubTitle>
+              <BoxContent>
+                <Tenfold
+                  src={tenfold}
+                />
+              </BoxContent>
+            </BoxWrapper>
+            <Dates>
+              <Start>Jan 2017</Start>
+              <End>Apr 2020</End>
             </Dates>
           </Box>
         </Boxes>
