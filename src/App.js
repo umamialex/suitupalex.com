@@ -4,6 +4,7 @@ import {
   blue,
   deepPurple,
   green,
+  grey,
   indigo,
   lightBlue,
   orange,
@@ -27,6 +28,7 @@ import styled from 'styled-components'
 import Appearance from './Appearance'
 import QuickLink from './QuickLink'
 import hawtie from './hawtie.png'
+import grafana from './grafana.svg'
 import kordami from './kordami.svg'
 import tenfold from './tenfold.svg'
 
@@ -132,6 +134,24 @@ function App() {
         </Info>
         <Boxes>
           <Box
+            endColor={grey[800]}
+            startColor={grey[900]}
+          >
+            <BoxWrapper>
+              <Title>Grafana Labs</Title>
+              <SubTitle>Director or Professional Services</SubTitle>
+              <BoxContent>
+                <Grafana
+                  src={grafana}
+                />
+              </BoxContent>
+            </BoxWrapper>
+            <Dates>
+              <Start>Aug 2020</Start>
+              <End>Current</End>
+            </Dates>
+          </Box>
+          <Box
             color={deepPurple}
           >
             <BoxWrapper>
@@ -195,23 +215,6 @@ function App() {
             </BoxWrapper>
           </Box>
           <Box
-            color={green}
-          >
-            <BoxWrapper>
-              <Title>Kordami LLC</Title>
-              <SubTitle>Cloud Application Architect</SubTitle>
-              <BoxContent>
-                <Kordami
-                  src={kordami}
-                />
-              </BoxContent>
-            </BoxWrapper>
-            <Dates>
-              <Start>Oct 2019</Start>
-              <End>Current (Contractor)</End>
-            </Dates>
-          </Box>
-          <Box
             color={blue}
           >
             <BoxWrapper>
@@ -226,6 +229,23 @@ function App() {
             <Dates>
               <Start>Jan 2017</Start>
               <End>Apr 2020</End>
+            </Dates>
+          </Box>
+          <Box
+            color={green}
+          >
+            <BoxWrapper>
+              <Title>Kordami LLC</Title>
+              <SubTitle>Cloud Application Architect</SubTitle>
+              <BoxContent>
+                <Kordami
+                  src={kordami}
+                />
+              </BoxContent>
+            </BoxWrapper>
+            <Dates>
+              <Start>Oct 2019</Start>
+              <End>Jun 2020</End>
             </Dates>
           </Box>
         </Boxes>
@@ -486,6 +506,10 @@ const Tenfold = styled.img`
 `
 
 const Kordami = styled.img`
+  width: 75%;
+`
+
+const Grafana = styled.img`
   width: 75%;
 `
 
