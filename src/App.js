@@ -139,7 +139,7 @@ function App() {
           >
             <BoxWrapper>
               <Title>Grafana Labs</Title>
-              <SubTitle>Director or Professional Services</SubTitle>
+              <SubTitle>Director of Professional Services</SubTitle>
               <BoxContent>
                 <Grafana
                   src={grafana}
@@ -219,7 +219,7 @@ function App() {
           >
             <BoxWrapper>
               <Title>Tenfold</Title>
-              <SubTitle>Integration and Professional Services Manager</SubTitle>
+              <SubTitle>Manager, Integration and Professional Services</SubTitle>
               <BoxContent>
                 <Tenfold
                   src={tenfold}
